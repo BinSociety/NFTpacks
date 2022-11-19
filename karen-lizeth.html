@@ -2,6 +2,7 @@
 <html lang="es">
 
 <!-- HEAD -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -180,11 +181,11 @@
         </div>
     </div>
 
-    <!-- New items Start -->
+    <!-- PAQUETES -->
     <div class="rn-new-items rn-section-gapTop">
         <div class="container">
             <div class="row g-5">
-                <!-- PAQUETE 1 = 5$ -->
+                <!-- PAQUETE 1 = 6$ -->
                 <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800"
                     class="col-5 col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="product-style-one no-overlay">
@@ -193,7 +194,7 @@
                         </div>
                         <br>
                         <a href="#"><span class="product-name">PAQUETE 6$</span></a>
-                        <span class="latest-bid">3 fotos y 3 videos.</span>
+                        <span class="latest-bid">3 Fotos y 3 Videos.</span>
                         <div class="bid-react-area">
                             <div class="react-area">
                                 <svg viewBox="0 0 17 16" fill="none" width="16" height="16"
@@ -212,15 +213,49 @@
                                 <div id="paypal-button-container"></div>
                             </div>
                         </div>
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="ANFYLSZEYF8UQ">
-                            <input type="image"
-                                src="https://www.paypalobjects.com/webstatic/mktg/merchant_portal/button/buynow.es.png"
-                                border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1"
-                                height="1">
-                        </form>
+                        <script
+                            src="https://www.paypal.com/sdk/js?client-id=AW4avILoD2sKlU7nsmi3gtEE9DwEZgTZCWF_ZA1mIZ2zfab5frhuxVm5iLhcZcQFOit54VcsaOnrYclo&enable-funding=venmo&currency=USD"
+                            data-sdk-integration-source="button-factory"></script>
+                        <script>
+                            function initPayPalButton() {
+                                paypal.Buttons({
+                                    style: {
+                                        shape: 'rect',
+                                        color: 'gold',
+                                        layout: 'vertical',
+                                        label: 'buynow',
+
+                                    },
+
+                                    createOrder: function (data, actions) {
+                                        return actions.order.create({
+                                            purchase_units: [{ "description": "Paquete 6$ Karen Lizeth ", "amount": { "currency_code": "USD", "value": 6 } }]
+                                        });
+                                    },
+
+                                    onApprove: function (data, actions) {
+                                        return actions.order.capture().then(function (orderData) {
+
+                                            // Full available details
+                                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                                            // Show a success message within this page, e.g.
+                                            const element = document.getElementById('paypal-button-container');
+                                            element.innerHTML = '';
+                                            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                                            // Or go to another URL:  actions.redirect('thank_you.html');
+
+                                        });
+                                    },
+
+                                    onError: function (err) {
+                                        console.log(err);
+                                    }
+                                }).render('#paypal-button-container');
+                            }
+                            initPayPalButton();
+                        </script>
                         <!-- FIN PAYPAL -->
 
                     </div>
@@ -236,7 +271,7 @@
                         </div>
                         <br>
                         <a href="#"><span class="product-name">PAQUETE 15$</span></a>
-                        <span class="latest-bid">15 fotos y 6 videos.</span>
+                        <span class="latest-bid">15 Fotos y 6 Videos.</span>
                         <div class="bid-react-area">
                             <div class="react-area">
                                 <svg viewBox="0 0 17 16" fill="none" width="16" height="16"
@@ -250,21 +285,59 @@
                         </div>
 
                         <!-- PAYPAL -->
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="89Y694GXE459Y">
-                            <input type="image"
-                                src="https://www.paypalobjects.com/webstatic/mktg/merchant_portal/button/buynow.es.png"
-                                border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1"
-                                height="1">
-                        </form>
+                        <div id="smart-button-container">
+                            <div style="text-align: center;">
+                                <div id="paypal-button-container"></div>
+                            </div>
+                        </div>
+                        <script
+                            src="https://www.paypal.com/sdk/js?client-id=AW4avILoD2sKlU7nsmi3gtEE9DwEZgTZCWF_ZA1mIZ2zfab5frhuxVm5iLhcZcQFOit54VcsaOnrYclo&enable-funding=venmo&currency=USD"
+                            data-sdk-integration-source="button-factory"></script>
+                        <script>
+                            function initPayPalButton() {
+                                paypal.Buttons({
+                                    style: {
+                                        shape: 'rect',
+                                        color: 'gold',
+                                        layout: 'vertical',
+                                        label: 'buynow',
 
+                                    },
+
+                                    createOrder: function (data, actions) {
+                                        return actions.order.create({
+                                            purchase_units: [{ "description": "Paquete 15$ Karen Lizeth ", "amount": { "currency_code": "USD", "value": 15 } }]
+                                        });
+                                    },
+
+                                    onApprove: function (data, actions) {
+                                        return actions.order.capture().then(function (orderData) {
+
+                                            // Full available details
+                                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                                            // Show a success message within this page, e.g.
+                                            const element = document.getElementById('paypal-button-container');
+                                            element.innerHTML = '';
+                                            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                                            // Or go to another URL:  actions.redirect('thank_you.html');
+
+                                        });
+                                    },
+
+                                    onError: function (err) {
+                                        console.log(err);
+                                    }
+                                }).render('#paypal-button-container');
+                            }
+                            initPayPalButton();
+                        </script>
                         <!-- FIN PAYPAL -->
 
                     </div>
                 </div>
-                <!-- fIN PAQUETE 2 = 15$ -->
+                <!-- FIN PAQUETE 2 = 15$ -->
 
                 <!-- PAQUETE 3 = 25$ -->
                 <div data-sal="slide-up" data-sal-delay="150" data-sal-duration="800"
@@ -275,7 +348,7 @@
                         </div>
                         <br>
                         <a href="#"><span class="product-name">PAQUETE 25$</span></a>
-                        <span class="latest-bid">35 fotos y 12 videos.</span>
+                        <span class="latest-bid">35 Fotos y 12 Videos.</span>
                         <div class="bid-react-area">
                             <div class="react-area">
                                 <svg viewBox="0 0 17 16" fill="none" width="16" height="16"
@@ -289,20 +362,59 @@
                         </div>
 
                         <!-- PAYPAL -->
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="TLLFBRQWMSJ8J">
-                            <input type="image"
-                                src="https://www.paypalobjects.com/webstatic/mktg/merchant_portal/button/buynow.es.png"
-                                border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1"
-                                height="1">
-                        </form>
+                        <div id="smart-button-container">
+                            <div style="text-align: center;">
+                                <div id="paypal-button-container"></div>
+                            </div>
+                        </div>
+                        <script
+                            src="https://www.paypal.com/sdk/js?client-id=AW4avILoD2sKlU7nsmi3gtEE9DwEZgTZCWF_ZA1mIZ2zfab5frhuxVm5iLhcZcQFOit54VcsaOnrYclo&enable-funding=venmo&currency=USD"
+                            data-sdk-integration-source="button-factory"></script>
+                        <script>
+                            function initPayPalButton() {
+                                paypal.Buttons({
+                                    style: {
+                                        shape: 'rect',
+                                        color: 'gold',
+                                        layout: 'vertical',
+                                        label: 'buynow',
+
+                                    },
+
+                                    createOrder: function (data, actions) {
+                                        return actions.order.create({
+                                            purchase_units: [{ "description": "Paquete 25$ Karen Lizeth ", "amount": { "currency_code": "USD", "value": 25 } }]
+                                        });
+                                    },
+
+                                    onApprove: function (data, actions) {
+                                        return actions.order.capture().then(function (orderData) {
+
+                                            // Full available details
+                                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                                            // Show a success message within this page, e.g.
+                                            const element = document.getElementById('paypal-button-container');
+                                            element.innerHTML = '';
+                                            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                                            // Or go to another URL:  actions.redirect('thank_you.html');
+
+                                        });
+                                    },
+
+                                    onError: function (err) {
+                                        console.log(err);
+                                    }
+                                }).render('#paypal-button-container');
+                            }
+                            initPayPalButton();
+                        </script>
                         <!-- FIN PAYPAL -->
 
                     </div>
                 </div>
-                <!-- fIN PAQUETE 3 = 25$ -->
+                <!-- FIN PAQUETE 3 = 25$ -->
             </div>
         </div>
     </div>
